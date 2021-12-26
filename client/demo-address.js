@@ -1,3 +1,15 @@
+var khaibao2Btn = document.getElementById("khaibaothongtincongdan");
+var danhsach2Btn = document.getElementById("danhsachnguoidan");
+var themtaikhoan2Btn = document.getElementById("themtaikhoan");
+var khaibaocapma2Btn = document.getElementById("khaibaocapma");
+var phantichdanso2Btn = document.getElementById("phantichdanso");
+khaibao2Btn.style.display = "none";
+themtaikhoan2Btn.style.display = "none";
+danhsach2Btn.style.display = "none";
+khaibaocapma2Btn.style.display = "none";
+phantichdanso2Btn.style.display = "block";
+
+
 function dashboard() {
     var khaibaoBtn = document.getElementById("khaibaothongtincongdan");
     var danhsachBtn = document.getElementById("danhsachnguoidan");
@@ -540,6 +552,43 @@ function submitkhaibaodanso() {
         // console.log(data)
         if(data.message == "thêm thành công"){
             alert("Khai báo công dân thành công")
+            getData('http://localhost:3001/api/address/get-address', {})
+    .then(data => {
+        if(data.role_id != 1) {
+            var temp = data.addressDetail.code;
+            
+        }else{
+            var temp = data.addressDetail
+        }
+        console.log(temp);
+        var congdanApi = 'http://localhost:3001/api/people/danh-sach-dan-so?type=2&address=' + temp;
+        getData(congdanApi, {})
+            .then(data => {
+                console.log(data)
+                var hienthidanhsachcongdanBtn = document.getElementById('hienthicongdandakhaibao');
+
+                var htmls = data.listPeople.map(function (listpeople) {              
+                    return `
+                        <tr>
+                            <td>${listpeople.cccd}</td>
+                            <td>${listpeople.hoten}</td>
+                            <td>${listpeople.ngaysinh}</td>
+                            <td>${listpeople.gioitinh}</td> 
+                            <td>${listpeople.tongiao}</td>
+                            <td>${listpeople.nghenghiep}</td>
+                            <td>${listpeople.Province.name}</td>
+                            <td>${listpeople.District.name}</td>
+                            <td>${listpeople.Ward.name}</td>
+                            <td>${listpeople.Village.name}</td>                                              
+                        </tr>
+                    `                
+                })
+                var html = htmls.join('');
+                hienthidanhsachcongdanBtn.innerHTML = html;
+            })
+
+    })
+
         }
     
     });
@@ -584,6 +633,210 @@ getData('http://localhost:3001/api/address/get-address', {})
 
     })
 
+
+
+function thongkegioitinh() {
+    getData('http://localhost:3001/api/address/get-address', {})
+    .then(data => {
+        if(data.role_id != 1) {
+            var x = data.addressDetail.code;
+            
+        }else{
+            var x = data.addressDetail
+        }
+        var gioitinh2 = document.querySelector('select[name ="gender2"]').value;
+        var gioitinhApi = 'http://localhost:3001/api/people/danh-sach-dan-so?type=2&address=' + x;
+        getData(gioitinhApi, {})
+            .then(data => {
+                console.log(data)
+                var thongkegioitinhBtn = document.getElementById('thongkegioitinh');
+
+                var htmls = data.listPeople.map(function (listpeople) { 
+                    if(listpeople.gioitinh == gioitinh2) {
+                        return `
+                            <tr>
+                                <td>${listpeople.cccd}</td>
+                                <td>${listpeople.hoten}</td>
+                                <td>${listpeople.ngaysinh}</td>
+                                <td>${listpeople.gioitinh}</td> 
+                                <td>${listpeople.tongiao}</td>
+                                <td>${listpeople.nghenghiep}</td>
+                                <td>${listpeople.Province.name}</td>
+                                <td>${listpeople.District.name}</td>
+                                <td>${listpeople.Ward.name}</td>
+                                <td>${listpeople.Village.name}</td>                                              
+                            </tr>
+                        `               
+                    }             
+                     
+                })
+                var html = htmls.join('');
+                thongkegioitinhBtn.innerHTML = html;
+            })
+
+    })
+}
+
+function thongketongiao() {
+    getData('http://localhost:3001/api/address/get-address', {})
+    .then(data => {
+        if(data.role_id != 1) {
+            var y = data.addressDetail.code;
+            
+        }else{
+            var y = data.addressDetail
+        }
+        var tongiao2 = document.querySelector('select[name ="tongiao"]').value;
+        console.log(tongiao2)
+        var tongiaoApi = 'http://localhost:3001/api/people/danh-sach-dan-so?type=2&address=' + y;
+        getData(tongiaoApi, {})
+            .then(data => {
+                console.log(data)
+                var thongketongiaoBtn = document.getElementById('thongketongiao');
+
+                var htmls = data.listPeople.map(function (listpeople) { 
+                    if(listpeople.tongiao == tongiao2) {
+                        return `
+                            <tr>
+                                <td>${listpeople.cccd}</td>
+                                <td>${listpeople.hoten}</td>
+                                <td>${listpeople.ngaysinh}</td>
+                                <td>${listpeople.gioitinh}</td> 
+                                <td>${listpeople.tongiao}</td>
+                                <td>${listpeople.nghenghiep}</td>
+                                <td>${listpeople.Province.name}</td>
+                                <td>${listpeople.District.name}</td>
+                                <td>${listpeople.Ward.name}</td>
+                                <td>${listpeople.Village.name}</td>                                              
+                            </tr>
+                        `               
+                    }             
+                     
+                })
+                var html = htmls.join('');
+                thongketongiaoBtn.innerHTML = html;
+            })
+
+    })
+}
+
+getData('http://localhost:3001/api/people/phan-tich-dan-so', {})
+    .then(data =>{
+        var bieudodanso = document.getElementById('bieudodanso');
+        console.log(data);
+        var length = data.totalPeople.count.length;
+        var htmls ='';
+        let a = data.totalPeople.count[0].count;
+        console.log(a);
+        if (data.role_id == 1){
+            for (let i=0; i<length; i++){                
+                htmls += `<div class="row">
+                            <div class="col-sm-1">
+                            <span>${data.totalPeople.rows[i].Province.name}</span>
+                            </div>
+                            <div class="col-sm-10">
+                                <div class="progress">
+                                <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ${data.totalPeople.count[i].count/a*66}%;">
+                                <span class="sr-only">60% Complete</span>
+                            </div>
+                            </div>
+                            </div>
+                            <div class="col-sm-1">
+                            <span>${data.totalPeople.count[i].count}</span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>` 
+            }
+            var html = `<div class="x_content" style="display: block;">
+                        <br>
+                        <h3>Biểu đồ dân số</h3>
+                        <br>
+                        ${htmls}
+                        </div>`
+            bieudodanso.innerHTML = html;
+        }
+        if (data.role_id == 2){
+            for (let i=0; i<length; i++){                
+                htmls += `<div class="widget_summary">
+                            <div class="col-sm-1">
+                            <span>${data.totalPeople.rows[i].District.name}</span>
+                            </div>
+                            <div class="col-sm-10">
+                                <div class="progress">
+                                <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ${data.totalPeople.count[i].count/a*66}%;">
+                                <span class="sr-only">60% Complete</span>
+                            </div>
+                            </div>
+                            </div>
+                            <div class="col-sm-1">
+                            <span>${data.totalPeople.count[i].count}</span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>` 
+            }
+            var html = `<div class="x_content" style="display: block;">
+            <br>
+                        <h3>Biểu đồ dân số</h3>
+                        <br>
+                        ${htmls}
+                        </div>`
+            bieudodanso.innerHTML = html;
+        }
+        if (data.role_id == 3){
+            for (let i=0; i<length; i++){                
+                htmls += `<div class="row">
+                            <div class="col-sm-1">
+                            <span>${data.totalPeople.rows[i].Ward.name}</span>
+                            </div>
+                            <div class="col-sm-10">
+                                <div class="progress">
+                                <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ${data.totalPeople.count[i].count/a*66}%;">
+                                <span class="sr-only">60% Complete</span>
+                            </div>
+                            </div>
+                            </div>
+                            <div class="col-sm-1">
+                            <span>${data.totalPeople.count[i].count}</span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>` 
+            }
+            var html = `<div class="x_content" style="display: block;">
+            <br>
+                        <h3>Biểu đồ dân số</h3>
+                        <br>
+                        ${htmls}
+                        </div>`
+            bieudodanso.innerHTML = html;
+        }
+        if (data.role_id == 4){
+            for (let i=0; i<length; i++){                
+                htmls += `<div class="row">
+                            <div class="col-sm-1">
+                            <span>${data.totalPeople.rows[i].Village.name}</span>
+                            </div>
+                            <div class="col-sm-10">
+                                <div class="progress">
+                                <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ${data.totalPeople.count[i].count/a*66}%;">
+                                <span class="sr-only">60% Complete</span>
+                            </div>
+                            </div>
+                            </div>
+                            <div class="col-sm-1">
+                            <span>${data.totalPeople.count[i].count}</span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>` 
+            }
+            var html = `<div class="x_content" style="display: block;">
+            <br>
+                        <h3>Biểu đồ dân số</h3>
+                        <br>
+                        ${htmls}
+                        </div>`
+            bieudodanso.innerHTML = html;
+        }
+    })
 
 
 

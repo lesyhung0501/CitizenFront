@@ -173,13 +173,109 @@
 
                 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
                     <div id="phantichdanso">
-                        <div>
+                        <div id="bieudodanso">
 
                         </div>
 
                         <div>
+                            <button style="margin-top: 10px;" type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo5">Thống kê theo giới tính</button>
+                            <div id="demo5" class="collapse">
 
+                                <div class="row">
+                                    <div class="col-md-12">                        
+                                        <div class="panel panel-primary">
+                                            <div style="margin-top: 30px;">
+                                                <div class="form-group">
+                                                    <select name="gender2" id="gender2">
+                                                        <option value="">--Chọn giới tính</option>
+                                                        <option value="Male">Male</option>
+                                                        <option value="Female">Female</option>
+                                                        <option value="Other">Other</option>
+                                                    </select>
+                                                </div>
+
+                                                <button class="btn btn-success" onclick="thongkegioitinh()">Tìm kiếm</button>
+
+                                            </div> 
+                                            
+                                            <div id="demo3" style="margin-top: 20px;">
+                                                <table class="table table-success table-hover ">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>CCCD</th>
+                                                            <th>Họ tên</th>
+                                                            <th>Ngày sinh</th>
+                                                            <th>Giới tính</th>
+                                                            <th>Tôn giáo</th>
+                                                            <th>Nghề nghiệp</th>
+                                                            <th>Tỉnh</th>
+                                                            <th>Huyện</th>
+                                                            <th>Xã</th>
+                                                            <th>Thôn</th>
+                                                        </tr>
+                                                    </thead>
+        
+                                                    <tbody id="thongkegioitinh">
+        
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        
+                        <div>
+                            <button style="margin-top: 10px;" type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo6">Thống kê theo tôn giáo</button>
+                            <div id="demo6" class="collapse">
+
+                                <div class="row">
+                                    <div class="col-md-12">                        
+                                        <div class="panel panel-primary">
+                                            <div style="margin-top: 30px;">
+                                                <div class="form-group">
+                                                    <select name="tongiao">
+                                                        <option value="">--Chọn tôn giáo</option>
+                                                        <option value="islam">Islam</option>
+                                                        <option value="hinduism">Hinduism</option>
+                                                        <option value="roman">Roman</option>
+                                                    </select>
+                                                </div>
+
+                                                <button class="btn btn-success" onclick="thongketongiao()">Tìm kiếm</button>
+
+                                            </div> 
+                                            
+                                            <div id="demo10" style="margin-top: 20px;">
+                                                <table class="table table-success table-hover ">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>CCCD</th>
+                                                            <th>Họ tên</th>
+                                                            <th>Ngày sinh</th>
+                                                            <th>Giới tính</th>
+                                                            <th>Tôn giáo</th>
+                                                            <th>Nghề nghiệp</th>
+                                                            <th>Tỉnh</th>
+                                                            <th>Huyện</th>
+                                                            <th>Xã</th>
+                                                            <th>Thôn</th>
+                                                        </tr>
+                                                    </thead>
+        
+                                                    <tbody id="thongketongiao">
+        
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                
                     </div>
                     
                     <div id="khaibaothongtincongdan">
@@ -240,10 +336,10 @@
                                                 <label for="quequan">Quê quán:</label>
                                                 <!-- <input type="text" required="true" class="form-control" id="quequan" name="quequan"> -->
                                                 <div class="" style="width:600px;">
-                                                    <div>
+                                                    <div style="margin-bottom: 5px;">
                                                         <!-- onchange="chontinhthanhcong(this)" -->
-                                                        <select  style="display:inline-block; height: 35px; margin-right: 10px;" id="chontinh" onchange="chontinhthanhcong(this)" name="tinh">
-                                                            <option>--Chọn tỉnh/thành phố:</option>
+                                                        <select  style="display:inline-block; width: 200px; height: 35px; margin-right: 10px;" id="chontinh" onchange="chontinhthanhcong(this)" name="tinh">
+                                                            <option style="width: 100%; display: block">--Chọn tỉnh/thành phố:</option>
                                                             <!-- <option value="0" >Chọn tỉnh/thành phố:</option>
                                                             <option value="1">Audi</option>
                                                             <option value="2">BMW</option>                                                -->
@@ -251,23 +347,23 @@
                                                     </div>
 
                                                     
-                                                    <div>
-                                                        <select style="display:inline-block; height: 35px; margin-right: 10px;" id="chonhuyen" onchange="chonhuyenthanhcong(this)" name="huyen">
-                                                            <option>--Chọn quận/huyện:</option>
+                                                    <div style="margin-bottom: 5px; margin-right: 5px;">
+                                                        <select style="display:inline-block; width: 200px; height: 35px; margin-right: 10px;" id="chonhuyen" onchange="chonhuyenthanhcong(this)" name="huyen">
+                                                            <option style="width: 100%; display: block">--Chọn quận/huyện:</option>
                                                                                                                 
                                                         </select>  
                                                     </div>
                                                     
-                                                    <div>
-                                                        <select style="display:inline-block; height: 35px; margin-right: 10px;" id="chonxa" onchange="chonxathanhcong(this)" name="xa">
-                                                            <option>--Chọn xã/phường:</option>
+                                                    <div style="margin-bottom: 5px; margin-right: 5px;">
+                                                        <select style="display:inline-block; width: 200px; height: 35px; margin-right: 10px;" id="chonxa" onchange="chonxathanhcong(this)" name="xa">
+                                                            <option style="width: 100%; display: block">--Chọn xã/phường:</option>
                                                                                                                
                                                         </select>  
                                                     </div>
                                                     
-                                                    <div>
-                                                        <select style="display:inline-block; height: 35px; margin-right: 10px;" id="chonthon" onchange="chonthonthanhcong(this)" name="thon">
-                                                            <option>--Chọn thôn/bản:</option>
+                                                    <div style="margin-top: 5px;">
+                                                        <select style="display:inline-block; width: 200px; height: 35px; margin-right: 10px;" id="chonthon" onchange="chonthonthanhcong(this)" name="thon">
+                                                            <option style="width: 100%; display: block">--Chọn thôn/bản:</option>
                                                                                                                   
                                                         </select> 
                                                     </div>

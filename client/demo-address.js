@@ -8,7 +8,123 @@ themtaikhoan2Btn.style.display = "none";
 danhsach2Btn.style.display = "none";
 khaibaocapma2Btn.style.display = "none";
 phantichdanso2Btn.style.display = "block";
-
+getData('http://localhost:3001/api/people/phan-tich-dan-so', {})
+    .then(data =>{
+        var bieudodanso = document.getElementById('bieudodanso');
+        console.log(data);
+        var length = data.totalPeople.count.length;
+        var htmls ='';
+        let a = data.totalPeople.count[0].count;
+        console.log(a);
+        if (data.role_id == 1){
+            for (let i=0; i<length; i++){                
+                htmls += `<div class="row">
+                            <div class="col-sm-1">
+                            <span>${data.totalPeople.rows[i].Province.name}</span>
+                            </div>
+                            <div class="col-sm-10">
+                                <div class="progress">
+                                <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ${data.totalPeople.count[i].count/a*66}%;">
+                                <span class="sr-only">60% Complete</span>
+                            </div>
+                            </div>
+                            </div>
+                            <div class="col-sm-1">
+                            <span>${data.totalPeople.count[i].count}</span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>` 
+            }
+            var html = `<div class="x_content" style="display: block;">
+                        <br>
+                        <h3>Biểu đồ dân số</h3>
+                        <br>
+                        ${htmls}
+                        </div>`
+            bieudodanso.innerHTML = html;
+        }
+        if (data.role_id == 2){
+            for (let i=0; i<length; i++){                
+                htmls += `<div class="widget_summary">
+                            <div class="col-sm-1">
+                            <span>${data.totalPeople.rows[i].District.name}</span>
+                            </div>
+                            <div class="col-sm-10">
+                                <div class="progress">
+                                <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ${data.totalPeople.count[i].count/a*66}%;">
+                                <span class="sr-only">60% Complete</span>
+                            </div>
+                            </div>
+                            </div>
+                            <div class="col-sm-1">
+                            <span>${data.totalPeople.count[i].count}</span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>` 
+            }
+            var html = `<div class="x_content" style="display: block;">
+            <br>
+                        <h3>Biểu đồ dân số</h3>
+                        <br>
+                        ${htmls}
+                        </div>`
+            bieudodanso.innerHTML = html;
+        }
+        if (data.role_id == 3){
+            for (let i=0; i<length; i++){                
+                htmls += `<div class="row">
+                            <div class="col-sm-1">
+                            <span>${data.totalPeople.rows[i].Ward.name}</span>
+                            </div>
+                            <div class="col-sm-10">
+                                <div class="progress">
+                                <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ${data.totalPeople.count[i].count/a*66}%;">
+                                <span class="sr-only">60% Complete</span>
+                            </div>
+                            </div>
+                            </div>
+                            <div class="col-sm-1">
+                            <span>${data.totalPeople.count[i].count}</span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>` 
+            }
+            var html = `<div class="x_content" style="display: block;">
+            <br>
+                        <h3>Biểu đồ dân số</h3>
+                        <br>
+                        ${htmls}
+                        </div>`
+            bieudodanso.innerHTML = html;
+        }
+        if (data.role_id == 4){
+            for (let i=0; i<length; i++){                
+                htmls += `<div class="row">
+                            <div class="col-sm-1">
+                            <span>${data.totalPeople.rows[i].Village.name}</span>
+                            </div>
+                            <div class="col-sm-10">
+                                <div class="progress">
+                                <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ${data.totalPeople.count[i].count/a*66}%;">
+                                <span class="sr-only">60% Complete</span>
+                            </div>
+                            </div>
+                            </div>
+                            <div class="col-sm-1">
+                            <span>${data.totalPeople.count[i].count}</span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>` 
+            }
+            var html = `<div class="x_content" style="display: block;">
+            <br>
+                        <h3>Biểu đồ dân số</h3>
+                        <br>
+                        ${htmls}
+                        </div>`
+            bieudodanso.innerHTML = html;
+        }
+    })
 
 function dashboard() {
     var khaibaoBtn = document.getElementById("khaibaothongtincongdan");
@@ -21,6 +137,124 @@ function dashboard() {
     danhsachBtn.style.display = "none";
     khaibaocapmaBtn.style.display = "none";
     phantichdansoBtn.style.display = "block";
+    getData('http://localhost:3001/api/people/phan-tich-dan-so', {})
+    .then(data =>{
+        var bieudodanso = document.getElementById('bieudodanso');
+        console.log(data);
+        var length = data.totalPeople.count.length;
+        var htmls ='';
+        let a = data.totalPeople.count[0].count;
+        console.log(a);
+        if (data.role_id == 1){
+            for (let i=0; i<length; i++){                
+                htmls += `<div class="row">
+                            <div class="col-sm-1">
+                            <span>${data.totalPeople.rows[i].Province.name}</span>
+                            </div>
+                            <div class="col-sm-10">
+                                <div class="progress">
+                                <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ${data.totalPeople.count[i].count/a*66}%;">
+                                <span class="sr-only">60% Complete</span>
+                            </div>
+                            </div>
+                            </div>
+                            <div class="col-sm-1">
+                            <span>${data.totalPeople.count[i].count}</span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>` 
+            }
+            var html = `<div class="x_content" style="display: block;">
+                        <br>
+                        <h3>Biểu đồ dân số</h3>
+                        <br>
+                        ${htmls}
+                        </div>`
+            bieudodanso.innerHTML = html;
+        }
+        if (data.role_id == 2){
+            for (let i=0; i<length; i++){                
+                htmls += `<div class="widget_summary">
+                            <div class="col-sm-1">
+                            <span>${data.totalPeople.rows[i].District.name}</span>
+                            </div>
+                            <div class="col-sm-10">
+                                <div class="progress">
+                                <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ${data.totalPeople.count[i].count/a*66}%;">
+                                <span class="sr-only">60% Complete</span>
+                            </div>
+                            </div>
+                            </div>
+                            <div class="col-sm-1">
+                            <span>${data.totalPeople.count[i].count}</span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>` 
+            }
+            var html = `<div class="x_content" style="display: block;">
+            <br>
+                        <h3>Biểu đồ dân số</h3>
+                        <br>
+                        ${htmls}
+                        </div>`
+            bieudodanso.innerHTML = html;
+        }
+        if (data.role_id == 3){
+            for (let i=0; i<length; i++){                
+                htmls += `<div class="row">
+                            <div class="col-sm-1">
+                            <span>${data.totalPeople.rows[i].Ward.name}</span>
+                            </div>
+                            <div class="col-sm-10">
+                                <div class="progress">
+                                <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ${data.totalPeople.count[i].count/a*66}%;">
+                                <span class="sr-only">60% Complete</span>
+                            </div>
+                            </div>
+                            </div>
+                            <div class="col-sm-1">
+                            <span>${data.totalPeople.count[i].count}</span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>` 
+            }
+            var html = `<div class="x_content" style="display: block;">
+            <br>
+                        <h3>Biểu đồ dân số</h3>
+                        <br>
+                        ${htmls}
+                        </div>`
+            bieudodanso.innerHTML = html;
+        }
+        if (data.role_id == 4){
+            for (let i=0; i<length; i++){                
+                htmls += `<div class="row">
+                            <div class="col-sm-1">
+                            <span>${data.totalPeople.rows[i].Village.name}</span>
+                            </div>
+                            <div class="col-sm-10">
+                                <div class="progress">
+                                <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ${data.totalPeople.count[i].count/a*66}%;">
+                                <span class="sr-only">60% Complete</span>
+                            </div>
+                            </div>
+                            </div>
+                            <div class="col-sm-1">
+                            <span>${data.totalPeople.count[i].count}</span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>` 
+            }
+            var html = `<div class="x_content" style="display: block;">
+            <br>
+                        <h3>Biểu đồ dân số</h3>
+                        <br>
+                        ${htmls}
+                        </div>`
+            bieudodanso.innerHTML = html;
+        }
+    })
+
 
 }
 
@@ -347,8 +581,50 @@ function hienthidanhsachcactaikhoandioiquyen() {
             })
             var html = htmls.join('');
             hienthicapduoiBtn.innerHTML = html;
+
+
+            var d = document.getElementById("hienthicapduoiquyen").children;
+            console.log(d[0].firstElementChild)
+                
+            for(var i = 0; i < d.length; i ++) {
+                
+                var node2 = document.createElement("TD");
+                var node3 = document.createElement("BUTTON");
+                // var node4 = document.createElement("A")
+                node3.innerHTML = "Sửa quyền";
+                node3.addEventListener("click", function() {
+                    console.log(d[i].firstChild)
+                    var a = d[i].firstChild;
+                    putData('http://localhost:3001/api/account/change-permission/'+ a, {})
+                        .then(data => {
+                            
+                            var a = d[i].firstElementChild;
+                            var b = a.nextSibling;
+                            b.nodeValue = data.changeAccount.status;                    
+                        })
+                });
+                node3.setAttribute('class', 'btn')
+                node3.setAttribute('class', 'btn-primary')
+                node3.setAttribute('type', 'button')
+                node2.appendChild(node3);
+                d[i].appendChild(node2);
+                // <button type="button" class="btn btn-primary">Primary</button>
+            }
+            
         })
 }
+
+function suaquyen(m) {
+    putData('http://localhost:3001/api/account/change-permission/'+m, {})
+        .then(data => {
+            
+            
+        
+        })
+
+
+}
+
 
 function themtaikhoancapduoi() {
     // var code = document.querySelector('input[class ="taikhoancapduoi"]').value;
@@ -553,41 +829,51 @@ function submitkhaibaodanso() {
         if(data.message == "thêm thành công"){
             alert("Khai báo công dân thành công")
             getData('http://localhost:3001/api/address/get-address', {})
-    .then(data => {
-        if(data.role_id != 1) {
-            var temp = data.addressDetail.code;
-            
-        }else{
-            var temp = data.addressDetail
-        }
-        console.log(temp);
-        var congdanApi = 'http://localhost:3001/api/people/danh-sach-dan-so?type=2&address=' + temp;
-        getData(congdanApi, {})
             .then(data => {
-                console.log(data)
-                var hienthidanhsachcongdanBtn = document.getElementById('hienthicongdandakhaibao');
+                if(data.role_id != 1) {
+                    var temp = data.addressDetail.code;
+                    
+                }else{
+                    var temp = data.addressDetail
+                }
+                console.log(temp);
+                var congdanApi = 'http://localhost:3001/api/people/danh-sach-dan-so?type=2&address=' + temp;
+                getData(congdanApi, {})
+                    .then(data => {
+                        console.log(data)
+                        var hienthidanhsachcongdanBtn = document.getElementById('hienthicongdandakhaibao');
 
-                var htmls = data.listPeople.map(function (listpeople) {              
-                    return `
-                        <tr>
-                            <td>${listpeople.cccd}</td>
-                            <td>${listpeople.hoten}</td>
-                            <td>${listpeople.ngaysinh}</td>
-                            <td>${listpeople.gioitinh}</td> 
-                            <td>${listpeople.tongiao}</td>
-                            <td>${listpeople.nghenghiep}</td>
-                            <td>${listpeople.Province.name}</td>
-                            <td>${listpeople.District.name}</td>
-                            <td>${listpeople.Ward.name}</td>
-                            <td>${listpeople.Village.name}</td>                                              
-                        </tr>
-                    `                
-                })
-                var html = htmls.join('');
-                hienthidanhsachcongdanBtn.innerHTML = html;
+                        var htmls = data.listPeople.map(function (listpeople) {              
+                            return `
+                                <tr>
+                                    <td>${listpeople.cccd}</td>
+                                    <td>${listpeople.hoten}</td>
+                                    <td>${listpeople.ngaysinh}</td>
+                                    <td>${listpeople.gioitinh}</td> 
+                                    <td>${listpeople.tongiao}</td>
+                                    <td>${listpeople.nghenghiep}</td>
+                                    <td>${listpeople.Province.name}</td>
+                                    <td>${listpeople.District.name}</td>
+                                    <td>${listpeople.Ward.name}</td>
+                                    <td>${listpeople.Village.name}</td>                                         
+                                </tr>
+                            `                
+                        })
+                        var html = htmls.join('');
+                        hienthidanhsachcongdanBtn.innerHTML = html;
+
+                    })
+
+                    
+                //code
+                // var node2 = document.createElement("TD");
+                // var node3 = document.createElement("BUTTON");
+
+                // node2.appendChild(node3);
+                // var textnode = document.createTextNode(data.listProvince[i].name);
+                // node.setAttribute('value', data.listProvince[i].code);
+                // document.getElementById("chontinh").appendChild(node);
             })
-
-    })
 
         }
     
@@ -629,9 +915,35 @@ getData('http://localhost:3001/api/address/get-address', {})
                 })
                 var html = htmls.join('');
                 hienthidanhsachcongdanBtn.innerHTML = html;
+
+                var c = document.getElementById("hienthicongdandakhaibao").children;
+                
+                
+
+                for(var i = 0; i < c.length; i ++) {
+                    
+                    var node2 = document.createElement("TD");
+                    var node3 = document.createElement("BUTTON");
+                    // var node4 = document.createElement("A")
+                    node3.innerHTML = "Sửa";
+                    node3.setAttribute('onclick', 'khaibao()')
+                    node3.setAttribute('class', 'btn')
+                    node3.setAttribute('class', 'btn-primary')
+                    node3.setAttribute('type', 'button')
+                    node2.appendChild(node3);
+                    c[i].appendChild(node2);
+                    // <button type="button" class="btn btn-primary">Primary</button>
+                }
+                console.log(c[0])
+                // var textnode = document.createTextNode(data.listProvince[i].name);
+
+                // node.appendChild(textnode);
+                // node.setAttribute('value', data.listProvince[i].code);
+                // document.getElementById("chontinh").appendChild(node);
             })
 
     })
+
 
 
 
@@ -720,124 +1032,6 @@ function thongketongiao() {
     })
 }
 
-getData('http://localhost:3001/api/people/phan-tich-dan-so', {})
-    .then(data =>{
-        var bieudodanso = document.getElementById('bieudodanso');
-        console.log(data);
-        var length = data.totalPeople.count.length;
-        var htmls ='';
-        let a = data.totalPeople.count[0].count;
-        console.log(a);
-        if (data.role_id == 1){
-            for (let i=0; i<length; i++){                
-                htmls += `<div class="row">
-                            <div class="col-sm-1">
-                            <span>${data.totalPeople.rows[i].Province.name}</span>
-                            </div>
-                            <div class="col-sm-10">
-                                <div class="progress">
-                                <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ${data.totalPeople.count[i].count/a*66}%;">
-                                <span class="sr-only">60% Complete</span>
-                            </div>
-                            </div>
-                            </div>
-                            <div class="col-sm-1">
-                            <span>${data.totalPeople.count[i].count}</span>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>` 
-            }
-            var html = `<div class="x_content" style="display: block;">
-                        <br>
-                        <h3>Biểu đồ dân số</h3>
-                        <br>
-                        ${htmls}
-                        </div>`
-            bieudodanso.innerHTML = html;
-        }
-        if (data.role_id == 2){
-            for (let i=0; i<length; i++){                
-                htmls += `<div class="widget_summary">
-                            <div class="col-sm-1">
-                            <span>${data.totalPeople.rows[i].District.name}</span>
-                            </div>
-                            <div class="col-sm-10">
-                                <div class="progress">
-                                <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ${data.totalPeople.count[i].count/a*66}%;">
-                                <span class="sr-only">60% Complete</span>
-                            </div>
-                            </div>
-                            </div>
-                            <div class="col-sm-1">
-                            <span>${data.totalPeople.count[i].count}</span>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>` 
-            }
-            var html = `<div class="x_content" style="display: block;">
-            <br>
-                        <h3>Biểu đồ dân số</h3>
-                        <br>
-                        ${htmls}
-                        </div>`
-            bieudodanso.innerHTML = html;
-        }
-        if (data.role_id == 3){
-            for (let i=0; i<length; i++){                
-                htmls += `<div class="row">
-                            <div class="col-sm-1">
-                            <span>${data.totalPeople.rows[i].Ward.name}</span>
-                            </div>
-                            <div class="col-sm-10">
-                                <div class="progress">
-                                <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ${data.totalPeople.count[i].count/a*66}%;">
-                                <span class="sr-only">60% Complete</span>
-                            </div>
-                            </div>
-                            </div>
-                            <div class="col-sm-1">
-                            <span>${data.totalPeople.count[i].count}</span>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>` 
-            }
-            var html = `<div class="x_content" style="display: block;">
-            <br>
-                        <h3>Biểu đồ dân số</h3>
-                        <br>
-                        ${htmls}
-                        </div>`
-            bieudodanso.innerHTML = html;
-        }
-        if (data.role_id == 4){
-            for (let i=0; i<length; i++){                
-                htmls += `<div class="row">
-                            <div class="col-sm-1">
-                            <span>${data.totalPeople.rows[i].Village.name}</span>
-                            </div>
-                            <div class="col-sm-10">
-                                <div class="progress">
-                                <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ${data.totalPeople.count[i].count/a*66}%;">
-                                <span class="sr-only">60% Complete</span>
-                            </div>
-                            </div>
-                            </div>
-                            <div class="col-sm-1">
-                            <span>${data.totalPeople.count[i].count}</span>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>` 
-            }
-            var html = `<div class="x_content" style="display: block;">
-            <br>
-                        <h3>Biểu đồ dân số</h3>
-                        <br>
-                        ${htmls}
-                        </div>`
-            bieudodanso.innerHTML = html;
-        }
-    })
-
 
 
 
@@ -860,6 +1054,22 @@ async function postData(url = '', data = {}) {
     // Default options are marked with *
     const response = await fetch(url, {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+        'Content-Type': 'application/json',
+        'token': localStorage.getItem('token'),
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: JSON.stringify(data)
+})
+    return response.json();
+}
+async function puttData(url = '', data = {}) {
+    // Default options are marked with *
+    const response = await fetch(url, {
+    method: 'PUT', // *GET, POST, PUT, DELETE, etc.
     mode: 'cors', // no-cors, *cors, same-origin
     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
     credentials: 'same-origin', // include, *same-origin, omit
